@@ -23,10 +23,10 @@ def euclidiana(rating1, rating2, r = 3):
         if chave in rating2:
             distance += pow(abs(rating1[chave] - rating2[chave]), r)
             commonRatings = True
-    if commonRatings: #se possuir alguma avaliação em comum
+    if commonRatings: #se possuir alguma avaliacao em comum
         return pow(float(distance),  1/r)
     else:
-        return 1000000 #Quando o usuario não tem avaliações em comum
+        return 1000000 #Quando o usuario nao tem avaliacoes em comum
 
 distance = euclidiana
     
