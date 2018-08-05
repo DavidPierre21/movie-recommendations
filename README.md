@@ -2,8 +2,6 @@
 
 ## Requerimentos
 * Python2
-* baixar o dataset [MovieLens](http://files.grouplens.org/datasets/movielens/ml-1m.zip)
-e extrair a pasta dentro do arquivo zip para a pasta do projeto.
 
 ## Como executar
 Clone este repositório, navegue até o diretório do projeto e execute
