@@ -5,13 +5,13 @@ from movielib import *
 # --- Parametros
 
 k = 50
-theuser = 6041 #944
+theuser = 6041
 
 # --- Distancias
 def media(numbers, n = 2):
     return (sum(numbers) + (3.0 * n)) / float(len(numbers) + n)
 
-def euclidiana(rating1, rating2, r = 3):
+def euclidiana(rating1, rating2, r = 2):
     """
     Verifica a distancia das avaliacoes dos filmes
     utilizando a distancia euclidiana(Ou minkowski com raiz quadrada)
@@ -88,7 +88,7 @@ medias = [(media(ratings), movie) for (movie, ratings) in neigh_ratings.items()]
 medias.sort()
 medias.reverse()
 
-print "===== RECOMENDADOS ======================================================"
+print "===== Filmes recomendados ======================================================"
 count = 0
 for (average, movie) in medias:
     if movie in theratings:
@@ -99,7 +99,7 @@ for (average, movie) in medias:
     if count > 10:
         break
 
-print "===== NAO-RECOMENDADOS ================================================="
+print "===== Filmes nao-recomendados ================================================="
 count = 0
 medias.reverse()
 for (average, movie) in medias:
