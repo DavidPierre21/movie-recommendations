@@ -11,7 +11,7 @@ Clone este repositório, navegue até o diretório do projeto e execute
 
 ## Modificando a entrada do algoritmo
 Abra o arquivo ratings.dat, que está dentro da pasta ml-1m
-Vá até as últimas linhas do arquivo. O usuário está configurado como o id 6041
+Vá até as últimas linhas do arquivo. O usuário está configurado como o **id** **6041**
 Modifique o arquivo.
 
 ```6041::1::4::Toy Story
