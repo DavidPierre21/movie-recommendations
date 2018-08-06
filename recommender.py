@@ -68,14 +68,14 @@ for index in range(k):
     (dist, user, ratings) = neighbours[index]
     
     print "===== %s ==================================================" % index
-    print "Vizinho #", user, ", distancia:", dist
+    print "Vizinho #", user
     
     for (movie, rating) in ratings.items():
         common = ''
         if theratings.has_key(movie):
             common = '   Usuario: %s' % theratings[movie]
         if common:
-            print movies[movie], rating, common
+            print movies[movie], "- Nota do vizinho: ", rating, common
 
         rs = neigh_ratings.get(movie)
         if not rs:
