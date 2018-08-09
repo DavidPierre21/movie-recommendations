@@ -74,7 +74,7 @@ def lmg_rmse(rating1, rating2): #erro quadratico medio (root mean square error)
 
 
 
-distance = minkowski # escolho qual tipo de distancia usar.
+distance = lmg_rmse # escolho qual tipo de distancia usar.
 
 
     
