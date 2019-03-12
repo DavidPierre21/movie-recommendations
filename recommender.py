@@ -1,16 +1,24 @@
-from math import sqrt
+from math import sqrt   
 from movielib import *
+import sys
+
+# --- Cores
+NOT_RECOMMENDED = "\033[1;31m"
+RECOMMENDED = "\033[1;32m"
+INFO = "\033[0;37m"
 
 # --- Parametros
 
-k = 50
+k = 10
 theuser = 6041
 
-# --- Distancias
+# --- Media
 def media(numbers, n = 2):
     return (sum(numbers) + (3.0 * n)) / float(len(numbers) + n)
 
-def minkowski(rating1, rating2, r = 2):  #Minkowski / Manhattan / Euclidiana ---- Basta modificar o valor de r 
+# --- Distancias
+
+def minkowski(rating1, rating2, r = 3):  #Minkowski / Manhattan / Euclidiana ---- Basta modificar o valor de r 
     """
     Verifica a distancia das avaliacoes dos filmes
     """
@@ -114,16 +122,18 @@ for row in get_movies():
 neigh_ratings = {} # movie -> [r1, r2, r3]
 for index in range(k):
     (dist, user, ratings) = neighbours[index]
-    
-    print "===== %s ==================================================" % index
-    print "Vizinho #", user
+
+    sys.stdout.write(INFO)
+    # print "\n===== %s ==================================================" % index
+    # print "Vizinho #", user
     
     for (movie, rating) in ratings.items():
         common = ''
         if theratings.has_key(movie):
             common = '   Usuario: %s' % theratings[movie]
         if common:
-            print movies[movie], "- Nota do vizinho: ", rating, common
+            pass
+            # print movies[movie], "- Nota do vizinho: ", rating, common
 
         rs = neigh_ratings.get(movie)
         if not rs:
@@ -136,25 +146,30 @@ medias = [(media(ratings), movie) for (movie, ratings) in neigh_ratings.items()]
 medias.sort()
 medias.reverse()
 
-print "===== Filmes recomendados ======================================================"
+sys.stdout.write(INFO)
+print "\n\n========================= Filmes recomendados =========================\n"
+sys.stdout.write(RECOMMENDED)
 count = 0
 for (average, movie) in medias:
     if movie in theratings:
         continue
 
-    print movies[movie], average
+    print count+1, "-", movies[movie], average
     count += 1
     if count > 10:
         break
 
-print "===== Filmes nao-recomendados ================================================="
+
+sys.stdout.write(INFO)
+print "\n\n======================= Filmes nao-recomendados =======================\n"
+sys.stdout.write(NOT_RECOMMENDED)
 count = 0
 medias.reverse()
 for (average, movie) in medias:
     if movie in theratings:
         continue
 
-    print movies[movie], average
+    print count+1, "-", movies[movie], average
     count += 1
     if count > 10:
         break
